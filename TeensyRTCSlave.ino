@@ -22,13 +22,14 @@ void setup() {
   //Setup clock
   setSyncProvider(getTeensy3Time);
 
-  Serial.begin(38400);
-  //while (!Serial);  // Wait for Arduino Serial Monitor to open
+  Serial.begin(9600);
+  while (!Serial);  // Wait for Arduino Serial Monitor to open
   delay(1000);
   if (timeStatus() != timeSet) {
     Serial.println("Unable to sync with the RTC");
   } else {
     Serial.println("RTC has set the system time");
+    digitalClockDisplay();
   }
 
   Wire.begin(SLAVE_ADDRESS);
